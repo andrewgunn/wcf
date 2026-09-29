@@ -431,6 +431,11 @@ def footer(page):
 </footer>"""
 
 
+def fingerprint(path):
+    """Short content hash, so browsers fetch the new file whenever it changes."""
+    return hashlib.sha1((SITE / path).read_bytes()).hexdigest()[:10]
+
+
 def page(out, title, main, active=None, desc=""):
     doc_title = "WCF | Employee owned since 1911" if out == "index.html" else f"{title} | WCF"
     d = f'<meta name="description" content="{htmllib.escape(desc)}">\n' if desc else ""
@@ -447,7 +452,7 @@ def page(out, title, main, active=None, desc=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Figtree:ital,wght@0,400..700;1,400&display=swap">
-<link rel="stylesheet" href="{rel('assets/css/site.css', out)}">
+<link rel="stylesheet" href="{rel('assets/css/site.css', out)}?v={fingerprint('assets/css/site.css')}">
 </head>
 <body>
 {header(out, active, over=out == "index.html")}
@@ -455,7 +460,7 @@ def page(out, title, main, active=None, desc=""):
 {main}
 </main>
 {footer(out)}
-<script src="{rel('assets/js/site.js', out)}"></script>
+<script src="{rel('assets/js/site.js', out)}?v={fingerprint('assets/js/site.js')}"></script>
 </body>
 </html>
 """
