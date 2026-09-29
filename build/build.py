@@ -604,7 +604,7 @@ def build_businesses():
         for s, name, img, summary in BUSINESSES
     )
     main = hero(out, "Our Businesses", [("Businesses", None)],
-                "WCF is an employee owned, private company operating a number of autonomous businesses focused on niche retailing and specialist distribution.")
+                "WCF is an employee owned, private company operating a number of autonomous businesses focused on niche retailing and specialist distribution.", img=IMG["hero1"])
     main += body(f'<div class="biz-rows">{rows}</div>')
     page(out, "Our Businesses", main, "biz", C["/our-businesses"]["description"])
 
@@ -688,19 +688,33 @@ ICONS = {
 
 def hub(cards, out):
     return '<div class="hub">' + "".join(
-        f'<a href="{rel(h, out)}"><span class="ic">{ICONS[i]}</span><h2>{t}</h2><p>{d}</p></a>' for t, h, i, d in cards
+        f'<a href="{rel(h, out)}"><h2>{t}</h2><p>{d}</p></a>' for t, h, i, d in cards
     ) + "</div>"
+
+
+def share_price():
+    soup = BeautifulSoup(C["/shareholders"]["html"], "html.parser")
+    return re.search(r"£[\d.]+", soup.find(string=re.compile("current share price")).find_parent("p").get_text()).group(0)
+
+
+def share_panels():
+    return f"""<div class="share-top" style="margin-top:14px">
+  <div class="panel navy"><h2>Share Price</h2><p class="price">{share_price()}</p><p class="muted">per share</p></div>
+  <div class="panel"><h2>Dealing Days</h2><p class="muted">WCF have four quarterly dealing days per year. These are always the:</p>
+    <ul><li>Last Friday in January</li><li>Last Friday in April</li><li>Last Friday in July</li><li>Last Friday in November</li></ul>
+    <p class="muted">Share dealing instructions must be received 10 days before the dealing day.</p></div>
+</div>"""
 
 
 def build_shareholders_hub():
     out = "our-shareholders.html"
     main = hero(out, "Our Shareholders", [("Shareholders", None)],
-                "Many employee owners remain shareholders of WCF long after their employment has ceased, supporting our sustainable growth for future generations.")
+                "Many employee owners remain shareholders of WCF long after their employment has ceased, supporting our sustainable growth for future generations.", img=IMG["hero2"])
     main += body(hub([
         ("WCF Board", "our-board.html", "board", "Our executive directors and non-executive chair."),
         ("Financial Statements", "financial-data.html", "report", "Annual reports and financial statements from 2019 onwards."),
         ("Share Information", "shareholders.html", "share", "Dealing days, the current share price, dividend history and how to contact the Share Registrar."),
-    ], out))
+    ], out) + share_panels())
     page(out, "Our Shareholders", main, "share", C["/our-shareholders"]["description"])
 
 
@@ -851,7 +865,7 @@ def build_recruitment_hub():
     out = "recruitment.html"
     lw = asset("https://www.wcf.co.uk/Assets/recruitment/LW_logo_LW employer only.png", 400)
     main = hero(out, "Join the WCF Family", [("Join Our Family", None)],
-                "Proud to be a Real Living Wage Employer. Every employee owner has a real stake in our success and a role that makes a difference.")
+                "Proud to be a Real Living Wage Employer. Every employee owner has a real stake in our success and a role that makes a difference.", img=IMG["hero3"])
     main += body(hub([
         ("Current Vacancies", "recruitment-wcf.html", "search", "Open roles across Pet &amp; Equestrian, Leisure, Apparel, Fuel Distribution and e-Commerce."),
         ("Working for WCF", "working-for-wcf.html", "work", "Why WCF is a special and unique place to work."),

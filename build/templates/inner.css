@@ -210,3 +210,34 @@
 /* homepage news */
 .latest-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
 .latest-head h2{font-size:clamp(38px,6.4vw,84px);font-weight:900;font-stretch:118%;letter-spacing:-.025em;line-height:.95}
+
+/* ---------- inner page polish ---------- */
+.page-hero h1{font-size:clamp(40px,6.4vw,84px);font-stretch:120%;letter-spacing:-.03em;line-height:.95;max-width:18ch}
+.page-hero .wrap{padding-block:clamp(48px,7vw,96px)}
+.page-hero .lede{max-width:56ch}
+.page-hero.cover .lede{max-width:40ch;color:#DDE4EE}
+.page-body{padding-block:clamp(56px,7vw,104px)}
+
+/* hub pages: navy link panels, as on the homepage */
+.hub{gap:14px}
+.hub a{position:relative;background:var(--navy);border:0;color:var(--on-navy);padding:30px 64px 32px 28px;gap:10px;min-height:180px;align-content:end;transition:background .2s}
+.hub a:hover{background:var(--navy-deep);box-shadow:none}
+.hub a::after{content:"";position:absolute;right:28px;top:32px;width:12px;height:12px;border-top:2.5px solid var(--yellow);border-right:2.5px solid var(--yellow);transform:rotate(45deg);transition:right .25s var(--ease)}
+.hub a:hover::after{right:22px}
+.hub h2{font-size:clamp(22px,2vw,26px);margin:0}
+.hub p{color:var(--on-navy-muted)}
+
+/* our businesses: bigger, photo-led rows */
+.biz-rows{gap:clamp(56px,8vw,112px)!important}
+.biz-row{grid-template-columns:minmax(0,7fr) minmax(0,5fr)!important;gap:clamp(28px,5vw,72px)!important}
+.biz-row:nth-child(even){grid-template-columns:minmax(0,5fr) minmax(0,7fr)!important}
+.biz-photo img{aspect-ratio:4/3;width:100%;object-fit:cover;border-radius:var(--r)}
+.biz-text h2{font-size:clamp(32px,4vw,56px)!important;font-weight:900;font-stretch:118%;letter-spacing:-.025em;line-height:.95}
+.biz-text p{font-size:18px}
+@media (max-width:760px){.biz-row,.biz-row:nth-child(even){grid-template-columns:1fr!important}}
+
+/* board: larger portraits */
+.person{grid-template-columns:160px minmax(0,1fr)!important}
+.person img{width:160px!important;height:200px!important;object-fit:cover;border-radius:12px}
+@media (max-width:620px){.person{grid-template-columns:1fr!important}.person img{width:160px!important;height:200px!important}}
+@media (max-width:560px){.hub a{min-height:0;padding:24px 56px 26px 22px}}
