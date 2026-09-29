@@ -138,6 +138,26 @@ def asset(url, max_w=1600):
     return dest
 
 
+def make_favicons():
+    """Square icons: the wide logo centred on navy, never stretched."""
+    logo = Image.open(CACHE / "logo.png").convert("RGBA")
+    # crop to the WCF letters only (drop the small tagline underneath)
+    alpha = logo.getchannel("A")
+    rows = [y for y in range(logo.height) if alpha.crop((0, y, logo.width, y + 1)).getbbox()]
+    gap = next((rows[i] for i in range(1, len(rows)) if rows[i] - rows[i - 1] > 1), rows[-1] + 1)
+    letters = logo.crop((0, rows[0], logo.width, gap))
+    letters = letters.crop(letters.getbbox())
+    for size, name in ((32, "favicon-32.png"), (180, "apple-touch-icon.png"), (512, "icon-512.png")):
+        big = size * 4
+        canvas = Image.new("RGBA", (big, big), (20, 37, 62, 255))
+        w = int(big * 0.82)
+        h = round(letters.height * w / letters.width)
+        mark = letters.resize((w, h), Image.LANCZOS)
+        canvas.alpha_composite(mark, ((big - w) // 2, (big - h) // 2))
+        canvas.resize((size, size), Image.LANCZOS).save(SITE / "assets" / "img" / name, "PNG", optimize=True)
+    return "assets/img/favicon-32.png"
+
+
 def local_image(fname, name, max_w=1600):
     return save_image((CACHE / fname).read_bytes(), name, max_w)
 
@@ -419,7 +439,9 @@ def page(out, title, main, active=None, desc=""):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>{htmllib.escape(doc_title)}</title>
-{d}<link rel="icon" href="{rel(FAVICON, out)}">
+{d}<link rel="icon" type="image/png" sizes="32x32" href="{rel(FAVICON, out)}">
+<link rel="icon" type="image/png" sizes="512x512" href="{rel('assets/img/icon-512.png', out)}">
+<link rel="apple-touch-icon" href="{rel('assets/img/apple-touch-icon.png', out)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Figtree:ital,wght@0,400..700;1,400&display=swap">
@@ -957,7 +979,8 @@ def main():
 
     (SITE / "assets" / "img").mkdir(parents=True, exist_ok=True)
     shutil.copy(CACHE / "logo.png", SITE / "assets/img/logo.png")
-    LOGO = FAVICON = "assets/img/logo.png"
+    LOGO = "assets/img/logo.png"
+    FAVICON = make_favicons()
     IMG.update({
         "pets": local_image("pets.jpg", "business-pet-equestrian"),
         "leisure": local_image("leisure.jpg", "business-leisure"),
