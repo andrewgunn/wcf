@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="/assets/favicon.ico">
+    <title>New campsite app to boost guest experience</title>
+    <meta name="description" content="WCF has launched a bespoke mobile app across its award-winning campsites, helping guests access site information, plan activities and make the most of their stay." />
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="2a3531a8-3d1c-40ca-b98f-a71de05c43ac" data-blockingmode="auto" type="text/javascript"></script>
+    <link href="/Content/css?v=UzbtDZVXyq7zKMrx6kbO3ui3CyT1gM1C8E_uS0XGNxo1" rel="stylesheet"/>
+
+    <script src="/bundles/modernizr?v=inCVuEFe6J4Q07A0AcRsbJic_UE5MwpRMNGcOtk94TE1"></script>
+
+    
+    <link href="https://assets.iocea.com/CMS/V2/content.min.css" rel="stylesheet" />
+    <link href="/Content/Stylesheets/Blog.min.css" rel="stylesheet" />
+    <style>
+        @media(max-width:767px) {
+            .blog-page h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+
+    <script data-cookieconsent="ignore">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('consent', 'default', {
+            'ad_personalization': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'denied',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted',
+            'wait_for_update': 500,
+        });
+        gtag("set", "ads_data_redaction", true);
+        gtag("set", "url_passthrough", true);
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-17076488-45"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-17076488-45');
+    </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '884293502769462');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" src="https://www.facebook.com/tr?id=884293502769462&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11072028309"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'AW-11072028309');</script>
+    <!-- Matomo -->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(["setCookieDomain", "*.wcf.co.uk"]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "https://wcf.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '21']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = 'https://cdn.matomo.cloud/wcf.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="https://wcf.matomo.cloud/matomo.php?idsite=21&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Matomo Code -->
+
+
+</head>
+<body>
+
+<header>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-4 col-lg-2">
+                <a href="/" title="Visit our homepage">
+                    <img src="/Assets/logo.png" alt="WCF" class="img-fluid">
+                </a>
+            </div>
+            <div class="col-8 d-lg-none text-end">
+                <button class="navbar-toggler btn-block" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa fa-bars"></span>
+                </button>
+            </div>
+            <div class="col-lg-10 col-12 align-self-center">
+
+<div class="row g-0">
+    <div class="col-12">
+        <nav class="navbar navbar-expand-lg" id="main-navigation">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-auto">
+                        <li class="nav-item " id="nav-businesses">
+                            <a title="Businesses" class="nav-link text-white fw-bold" href="/our-businesses" aria-haspopup="false">Businesses</a>
+                        </li>
+                        <li class="nav-item " id="nav-shareholders">
+                            <a title="Shareholders" class="nav-link text-white fw-bold" href="/our-shareholders" aria-haspopup="false">Shareholders</a>
+                        </li>
+                        <li class="nav-item " id="nav-our-legacy">
+                            <a title="Our Legacy" class="nav-link text-white fw-bold" href="/our-legacy" aria-haspopup="false">Our Legacy</a>
+                        </li>
+                        <li class="nav-item " id="nav-guiding-principles">
+                            <a title="Guiding Principles" class="nav-link text-white fw-bold" href="/our-guiding-principles" aria-haspopup="false">Guiding Principles</a>
+                        </li>
+                        <li class="nav-item " id="nav-join-our-family">
+                            <a title="Join Our Family" class="nav-link text-white fw-bold" href="/recruitment" aria-haspopup="false">Join Our Family</a>
+                        </li>
+                        <li class="nav-item " id="nav-blog">
+                            <a title="Blog" class="nav-link text-white fw-bold" href="/blog" aria-haspopup="false">Blog</a>
+                        </li>
+                        <li class="nav-item " id="nav-in-the-press">
+                            <a title="In the Press" class="nav-link text-white fw-bold" href="/blog/in-the-press" aria-haspopup="false">In the Press</a>
+                        </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</header>
+    
+
+<div class="blog-page mt-5" id="cms-outer">
+    <div id="blogarticles" class="container ">
+        <div class="row">
+            <div class="col-12 text-center text-md-start">
+                <a href="/blog" class="btn btn-primary btn-back mb-4 rounded"><em class="fa fa-caret-left">&nbsp;</em> Back To Articles</a>
+            </div>
+        </div>
+       
+        <div class="row mb-3">
+            <div class="col-12 col-md-9 col-lg-10">
+                <h1 class="mb-0">Dedicated app boosts guest experience at award-winning campsites</h1>
+            </div>
+            <div class="col-12 col-md-3  col-lg-2">
+                <div class="blog-inner-btn mt-2 float-left float-md-right">
+                    In the Press
+                </div>
+            </div>
+        </div>
+        <div class="row">
+    <div class="col-md-12"><div class="display">
+<p>WCF has introduced a bespoke app to make the guest experience even better. WCF developed the customer app in conjunction with technology firm <a href="https://www.holidaymakerapp.co.uk/" title="">Holidaymaker </a>to improve access to key information about the site amenities, accommodation and local area and encourage visitor interaction, allowing them to better plan their holiday in advance.&nbsp;</p><p>The technology has been rolled out across our three sites at <a href="https://www.drummohr.co.uk/" title="">Drummohr Camping and Glamping Site</a>, near Edinburgh, <a href="https://www.herdinghillfarm.co.uk/" title="">Herding Hill Farm</a>, close to Hadrian’s Wall in Northumberland, and <a href="https://www.longnorwood.co.uk/" title="">Longnor Wood </a>in the heart of the Peak District. 
+</p>
+            <p><img src="https://www.wcf.co.uk/Assets/in the press/DedicatedApp/Picture10.jpg" class="img-fluid" alt=""></p><a href="https://www.allanstobart.co.uk/" title=""></a></div>The app allows guests to:&nbsp;<div><p><br></p><p>
+</p><ul>
+ <li>Access information about accommodation,
+     site facilities, events and optional extras</li>
+<li> Find reminders about what to bring to
+     make the most of their stay</li>
+<li>Explore an interactive map of the campsite</li>
+<li>Find out where to eat and visit
+     locally, with key links to the websites of local attractions, including
+     how to book tickets</li>
+<li> Discover nearby walking and cycling
+     routes</li>
+<li> Take advantage of special offers, manage
+     their booking and leave feedback</li>
+<li> Re-book before they leave to gain a
+     loyalty discount</li>
+</ul>
+
+
+
+ 
+ 
+
+
+
+
+
+Guests can also create personalised holiday itineraries before they
+arrive via the app, and receive pop up notifications
+with useful information such as any emergency road closures nearby, or the
+arrival of a mobile pizza van or ice cream van on site.&nbsp;</div><div><p><br></p><p>Jo Ritzema, Executive Chair of WCF, said: “Our guests are what make the
+success of our campsites, and we’re always looking at ways to improve the
+on-site experience to make their stays even better than before. The app boosts
+the services we already provide and helps ensure that our guests have all the
+information they need for an enjoyable and relaxing stay. We worked closely
+with the team at Holidaymaker to develop a different version of the app for
+each site so it reflects the location, and the events and activities available.
+We believe it takes staying at all our campsites to the next level and it’s
+really exciting that our guests now have easy access to these extra services
+and offers at the touch of a button.”&nbsp;</p><p>All three sites are five-star rated from the <a href="https://www.ratedtrips.com/" title="">AA </a>and have picked up numerous awards
+including Drummohr being named best campsite in the UK in a poll by
+Camping magazine, Longnor Wood winning
+the AA’s Heart of England Campsite of the Year and the UK’s Best Adult Only Site by Campsites.co.uk for two
+consecutive years, and Herding Hill Farm achieving a coveted AA Platinum
+Pennant Award.&nbsp;</p><p>David Lakins, CEO of Holidaymaker, said: “Working with the WCF team has
+been a pleasure, and we’re excited that the Holidaymaker platform&nbsp;is
+continuing to enhance the guest experience. The app is already seeing an
+impressive number of downloads, enabling&nbsp;guests to better self-serve and
+fully explore the stunning surroundings. The WCF team has really engaged with
+the app, and Holidaymakers’ Direct-to-Guest Marketing™ tools, and it’s
+fantastic to see how much of an impact it is having for both staff and guests.”&nbsp;</p><p>A different version of the app is available for each individual campsite
+and can be downloaded on all main mobile devices. The app can be downloaded by
+anyone, with or without a booking. The sites promote the app via notices on
+site, on their websites and on social media. </p><div><div class="display"><p> </p>
+<img src="https://www.wcf.co.uk/Assets/in the press/DedicatedApp/Picture12.jpg" class="img-fluid" alt="">
+
+<p> <br></p><p><b>Press Links</b></p><ul><li><a href="https://travel-news.co.uk/technology/wcf-launch-app-for-campers/33735/" title="">Travel News   </a></li><li><a href="https://www.caravantimes.co.uk/features/new-app-aims-to-enhance-guest-experience-at-3-award-winning-campsites/" title="">Caravan Times </a></li></ul>
+
+
+
+        </div></div></div></div>
+</div>
+        <div class="col-12 blog-footer">
+            <div class="row">
+                <div class="col-6">
+
+            <div class="float-left" id="prev-article">
+                <div id="previous-block">
+                    <a href="/blog/article/allan-stobart-lubricants-and-fuels-announces-expansion-plans">
+                        <div class="text-right"><strong>< Previous Article</strong></div>
+                        <div class="row" style="margin-top:15px;">
+                            <div class="col-md-7 col-12 pr-md-0">
+                                <strong class="next-prev-article-title">
+                                    Allan Stobart Lubricants and Fuels announces expansion plans
+                                </strong>
+                            </div>
+                            <div class="col-5 d-none d-md-block">
+                                <div style="width: 100%; padding-bottom: 100%; display: block; background-size: contain; background-repeat: no-repeat; background-image: url('https://www.wcf.co.uk/Assets/Blog/AllanStobartLubricants.png')"></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+                </div>
+                <div class="col-6">
+
+            <div class="pull-left" id="next-article">
+                <div id="next-block">
+                    <a href="/blog/article/pet-food-brand-inspired-by-lake-district-launches-partnership-with-mountain-rescue-charity">
+                        <div><strong>Next Article ></strong></div>
+                        <div class="row" style="margin-top:15px;">
+                            <div class="col-5 d-none d-md-block">
+                                <div style="width:100%; padding-bottom:100%; display:block; background-size:contain; background-repeat:no-repeat; background-image:url('https://www.wcf.co.uk/Assets/Blog/Petfoodbrand inspiredbyLakeDistrictlaunches.png')"></div>
+                            </div>
+                            <div class="col-md-7 col-12 pl-md-0">
+                                <strong class="next-prev-article-title">
+                                    Pet food brand inspired by Lake District launches partnership with mountain rescue charity
+                                </strong>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 pb-2">
+                <div class="row text-center">
+                    <div class="col-12">
+                        Registered office: WCF Ltd,<br class="d-md-none" /> Crawhall, Brampton, Cumbria CA8 1TN&nbsp;&nbsp;&nbsp;&nbsp; <br class="d-lg-none" />
+                        Tel: <a href="tel:016977 45050">016977 45050</a>&nbsp;&nbsp;&nbsp;&nbsp; <br class="d-lg-none" />
+                        Registration number: 2263148
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-center footer-links">
+                                <a class="text-white" title="Cookie Policy" href="/cookie-policy">Cookie Policy</a> <br class="d-lg-none" />
+                                <a class="text-white" title="Privacy Policy" href="/privacy-policy">Privacy Policy</a> <br class="d-lg-none" />
+                                <a class="text-white" title="Policy Statements" href="/policy-statements">Policy Statements</a> <br class="d-lg-none" />
+                                <a class="text-white" title="Tax Strategy Statement" href="/tax-strategy-statement">Tax Strategy Statement</a> <br class="d-lg-none" />
+                                <a class="fab fa-linkedin" href="https://www.linkedin.com/company/78332694/" target="_blank" rel="noopener noreferrer" style="font-size:x-large;"></a> <br class="d-lg-none" />
+                                <a class="fab fa-youtube" href="https://www.youtube.com/channel/UCbXpWMFx2p4FyB0z9fTUcsA/featured" target="_blank" rel="noopener noreferrer" style="font-size:x-large;"></a> <br class="d-lg-none" />
+
+                <a href="/recruitment-employee-owner" title="Being an employee owner">
+                    <img src="/Assets/logo.png" alt="Being an employee owner" class="img-fluid" width="100" height="100">
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script defer src="/Scripts/ViewScripts/Theme.min.js"></script>
+
+<div class="modal fade" id="newsletter-popup" tabindex="-1" role="dialog" aria-labelledby="newsletter-popup-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newsletter-popupTitle">Sign up to our newsletter</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="newsletter-content">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('.center-carousel').slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            centerMode: true,
+            variableWidth: true,
+            prevArrow: '<button class="fa fa-chevron-left btn carousel-arrow-left" aria-label="Previous" type="button" style=""></button>',
+            nextArrow: '<button class="fa fa-chevron-right btn carousel-arrow-right" aria-label="Next" type="button" style=""></button>'
+        });
+        if ($('.in-page-carousel').length > 0) {
+            $('.in-page-carousel').slick({
+                dots: false,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                prevArrow: '<button class="fa fa-chevron-left btn carousel-arrow-left" aria-label="Previous" type="button" style=""></button>',
+                nextArrow: '<button class="fa fa-chevron-right btn carousel-arrow-right" aria-label="Next" type="button" style=""></button>',
+                responsive: [
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        }
+        if ($('#HearAboutUs').length > 0) {
+            $('#HearAboutUs').on('change', function () {
+                if ($(this).val() == "Other") {
+                    $('.HowDidYouHearAboutUsTextHolder').removeClass("d-none").attr("required", "required");
+                } else {
+                    $('.HowDidYouHearAboutUsTextHolder').addClass("d-none").removeAttr("required");
+                    $('#HowDidYouHearAboutUsText').val('');
+                }
+            })
+        }
+    </script>
+    
+    <script>
+        $('.ymal-carousel').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        arrows: true,
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 700,
+                    settings: {
+                        arrows: true,
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+    </script>
+
+</body>
+</html>

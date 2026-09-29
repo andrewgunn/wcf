@@ -1,2 +1,5 @@
 .playwright-mcp/
 .DS_Store
+build/.venv/
+build/cache/
+__pycache__/
