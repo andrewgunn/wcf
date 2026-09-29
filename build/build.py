@@ -209,6 +209,8 @@ def fix_links(root, page):
             if "protected" in a.get_text():
                 a.string = href[7:]
             continue
+        if re.fullmatch(r"[\w./-]+\.html(#[\w-]*)?", href):
+            continue
         if href.startswith("javascript") or not href or not href.startswith(("http", "/", "#", "tel:")):
             a.unwrap()
             continue
@@ -347,7 +349,7 @@ JOIN = ("Join Our Family", "recruitment.html", "join")
 LOGO = None
 
 
-def header(page, active):
+def header(page, active, over=False):
     def item(label, href, key, cls=""):
         cur = ' aria-current="page"' if key == active else ""
         c = f' class="{cls}"' if cls else ""
@@ -361,7 +363,7 @@ def header(page, active):
     <button type="button" id="ribbon-close" aria-label="Hide prototype notice">Hide</button>
   </div>
 </div>
-<header class="site-header">
+<header class="site-header{' over' if over else ''}">
   <div class="wrap">
     <a class="logo" href="{rel('index.html', page)}" aria-label="WCF home"><img src="{rel(LOGO, page)}" alt="WCF" width="166" height="72"></a>
     <nav aria-label="Main"><ul class="nav">{desktop}</ul></nav>
@@ -448,7 +450,7 @@ def page(out, title, main, active=None, desc=""):
 <link rel="stylesheet" href="{rel('assets/css/site.css', out)}">
 </head>
 <body>
-{header(out, active)}
+{header(out, active, over=out == "index.html")}
 <main>
 {main}
 </main>
@@ -475,7 +477,7 @@ def hero(page_out, title, crumbs, lede="", img=None, tag=""):
     if lede:
         parts += f'<p class="lede">{lede}</p>'
     if img:
-        return f'<section class="page-hero has-img"><div class="wrap"><div class="hero-text">{parts}</div><div class="hero-img"><img src="{rel(img, page_out)}" alt=""></div></div></section>'
+        return f'<section class="page-hero cover"><img class="cover-img" src="{rel(img, page_out)}" alt=""><div class="wrap">{parts}</div></section>'
     return f'<section class="page-hero"><div class="wrap">{parts}</div></section>'
 
 
@@ -507,7 +509,7 @@ BUSINESSES = [
      "Three 5-star, dog-friendly camping and glamping sites: Herding Hill Farm on Hadrian's Wall, Drummohr near Edinburgh and Longnor Wood in the Peak District."),
     ("apparel", "Apparel", "apparel",
      "Mail order since 1989, with 4 clothing brands for the mature market: Country Collection, James Meade, The Classic Boutique and Bella di Notte. Designed in the UK and despatched from Brampton and Malton."),
-    ("fuel-distribution", "Fuel Distribution", "fuel",
+    ("fuel-distribution", "Fuel Distribution", "hero2",
      "One of the top 10 independent fuel distributors in the UK, operating over 70 tankers from 13 depots through Allan Stobart, Chandlers and Easy Fuels."),
     ("ecommerce-fulfilment", "e-Commerce Fulfilment", "ecom",
      "A1 Lawn and Progreen Weed Control Solutions supply lawn and paddock seed, fertiliser, weedkiller and ground care to gardeners, landscapers and the amenity sector."),
@@ -568,9 +570,9 @@ def post_cards(posts, page_out, heading="h2"):
 def build_home(posts):
     out = "index.html"
     main = (TPL / "home-main.html").read_text()
-    for k in ("pets", "leisure", "apparel", "fuel", "ecom", "legacy"):
-        main = main.replace("{{" + k + "}}", rel(IMG[k], out))
-    news = f"""<section class="section biz" id="news">
+    for k, v in IMG.items():
+        main = main.replace("{{" + k + "}}", rel(v, out))
+    news = f"""<section class="section intro" id="news">
     <div class="wrap">
       <div class="latest-head"><h2>Latest news</h2><a class="text-link" href="blog.html">All blog posts</a></div>
       <div class="posts">{post_cards(posts[:3], out, "h3")}</div>
@@ -657,6 +659,12 @@ def build_brand(s, name, img):
     side = aside("Our businesses", [(n, f"our-brands/{x}.html") for x, n, _, _ in BUSINESSES], out)
     main = hero(out, htmllib.escape(src["h1"] or name), [("Businesses", "our-businesses.html"), (name, None)], img=IMG[img])
     main += body_with_aside(inner, side)
+    i = [x for x, *_ in BUSINESSES].index(s)
+    ns, nname, nimg, _ = BUSINESSES[(i + 1) % len(BUSINESSES)]
+    main += f'''<a class="next-biz" href="{rel('our-brands/' + ns + '.html', out)}">
+  <img src="{rel(IMG[nimg], out)}" alt="" loading="lazy">
+  <span class="wrap"><small>Next business</small><b>{htmllib.escape(nname)}</b></span>
+</a>'''
     page(out, name, main, "biz", src["description"])
 
 
@@ -812,8 +820,13 @@ def build_legacy():
     paras = soup.div.decode_contents()
     inner = f"""<div class="legacy-grid">
   <div class="legacy-img"><img src="{rel(IMG['legacy'], out)}" alt="Collage of WCF history: fuel tankers, farm feeds, catalogues and horticulture"></div>
-  <div class="prose">{paras}<p><strong>Phil Murray</strong><br>Chief Executive Officer</p></div>
-</div>"""
+  <div class="prose">{paras}</div>
+</div>
+<figure class="ceo">
+  <img src="{rel(IMG['phil'], out)}" alt="Phil Murray" loading="lazy">
+  <blockquote><p>“Our WCF employee owners are proud to work for a company where what they do both individually and collectively makes a meaningful difference and to play their part in continuing the WCF legacy.”</p>
+  <figcaption><b>Phil Murray</b> Chief Executive Officer</figcaption></blockquote>
+</figure>"""
     main = hero(out, "Our Legacy", [("Our Legacy", None)], "Our legacy, your future, today and tomorrow.")
     main += body(inner)
     page(out, "Our Legacy", main, "legacy", C["/our-legacy"]["description"])
@@ -988,6 +1001,12 @@ def main():
         "fuel": local_image("fuel.jpg", "business-fuel"),
         "ecom": local_image("ecom.jpg", "business-ecommerce"),
         "legacy": local_image("legacy.png", "legacy-collage", 900),
+        "hero1": local_image("6e20d8a6dcb2c68d", "hero-lakes-heritage"),
+        "hero2": local_image("f63ef6f247c71447", "hero-fuel-fleet"),
+        "hero3": local_image("1c3d7629bcc20848", "hero-pet-store-team"),
+        "film": local_image("9a025572ccbca06b", "film-poster"),
+        "team": local_image("84e233068f74bfb0", "employee-owners"),
+        "phil": local_image("3c593d85b1f914bd", "phil-murray", 900),
     })
 
     posts = blog_posts()

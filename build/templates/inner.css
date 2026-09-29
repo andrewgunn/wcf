@@ -185,3 +185,28 @@
 .page-body .legacy-grid{align-items:start}
 .page-body .legacy-img{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px)}
 @media (max-width:900px){.page-body .legacy-img{position:static}}
+
+/* full-bleed photo header (brand pages) */
+.page-hero.cover{position:relative;overflow:hidden;isolation:isolate;background:var(--navy-deep)}
+.page-hero.cover .cover-img{position:absolute;inset:0 0 0 auto;width:62%;height:100%;object-fit:cover;z-index:-2;-webkit-mask-image:linear-gradient(90deg,transparent,#000 38%);mask-image:linear-gradient(90deg,transparent,#000 38%)}
+.page-hero.cover .wrap{min-height:clamp(340px,44vw,540px);align-content:end;padding-block:clamp(48px,7vw,88px)}
+.page-hero.cover h1{font-size:clamp(40px,7vw,96px);font-stretch:120%;letter-spacing:-.03em;line-height:.92;max-width:11ch}
+@media (max-width:760px){
+  .page-hero.cover .cover-img{width:100%;-webkit-mask-image:none;mask-image:none;opacity:.5}
+  .page-hero.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--navy-deep),transparent 80%);z-index:-1}
+}
+
+/* next business band */
+.next-biz{position:relative;display:block;overflow:hidden;background:var(--navy-deep);color:#fff;text-decoration:none;isolation:isolate}
+.next-biz img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;z-index:-1;transition:opacity .4s,transform 1s var(--ease)}
+.next-biz:hover img{opacity:.5;transform:scale(1.03)}
+.next-biz .wrap{display:grid;gap:8px;padding-block:clamp(48px,7vw,96px)}
+.next-biz small{font-size:15px;font-weight:700;color:var(--yellow)}
+.next-biz b{font-family:var(--display);font-stretch:120%;font-weight:900;font-size:clamp(40px,7vw,96px);letter-spacing:-.03em;line-height:.95}
+
+/* legacy page CEO block */
+.page-body .ceo{margin-top:clamp(56px,8vw,104px)}
+
+/* homepage news */
+.latest-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+.latest-head h2{font-size:clamp(38px,6.4vw,84px);font-weight:900;font-stretch:118%;letter-spacing:-.025em;line-height:.95}
